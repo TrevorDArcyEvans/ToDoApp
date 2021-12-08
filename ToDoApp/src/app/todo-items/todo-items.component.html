@@ -1,0 +1,28 @@
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">To Do List</h1>
+</div>
+
+<div class="row">
+  <textarea id="description" name="description" [(ngModel)]="newDescription" rows="4" cols="60" placeholder="There is always something to do!"></textarea>
+  <button type="button" (click)="onCreate(newDescription)" [disabled]="newDescription === ''" style="margin: 10px;">Add Task</button>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let pd of service.list">
+                    <td><input type="checkbox" [checked]="pd.isCompleted" (change)="onCompleteToggle(pd)"/></td>
+
+                    <div *ngIf="pd.isCompleted; then thenDescrip else elseDescrip"></div>
+                    <ng-template #thenDescrip><td><del>{{ pd.description }}</del></td></ng-template>
+                    <ng-template #elseDescrip><td>{{ pd.description }}</td></ng-template>
+                    
+                    <td>
+                        <i class="fa fa-trash-o fa-lg text-danger" (click)="onDelete(pd)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
