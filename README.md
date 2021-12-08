@@ -22,6 +22,7 @@ open [Swagger page](http://localhost:5000/swagger/index.html)
 
 ```bash
 cd ToDoApp
+npm install -g @angular/cli
 ng install --save-dev @angular-devkit/build-angular
 ng build
 ng serve
