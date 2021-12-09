@@ -1,38 +1,38 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ToDoAPI.Models
+﻿namespace ToDoAPI.Models
 {
-	public sealed record ToDoItemModel
-	{
-		public int Id { get; set; }
+  using System.ComponentModel.DataAnnotations;
 
-		[Required]
-		public string Description { get; set; }
+  public sealed record ToDoItemModel
+  {
+    public int Id { get; set; }
 
-		public bool IsCompleted { get; set; }
+    [Required]
+    public string Description { get; set; }
 
-		#region Equals overrides
+    public bool IsCompleted { get; set; }
 
-		public bool Equals(ToDoItemModel other)
-		{
-			if (ReferenceEquals(null, other))
-			{
-				return false;
-			}
+    #region Equals overrides
 
-			if (ReferenceEquals(this, other))
-			{
-				return true;
-			}
+    public bool Equals(ToDoItemModel other)
+    {
+      if (ReferenceEquals(null, other))
+      {
+        return false;
+      }
 
-			return Id == other.Id;
-		}
+      if (ReferenceEquals(this, other))
+      {
+        return true;
+      }
 
-		public override int GetHashCode()
-		{
-			return Id;
-		}
+      return Id == other.Id;
+    }
 
-		#endregion
-	}
+    public override int GetHashCode()
+    {
+      return Id;
+    }
+
+    #endregion
+  }
 }
